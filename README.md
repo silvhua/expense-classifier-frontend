@@ -1,4 +1,5 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Expense Classifier Front End (Datajam 2024)
+This project is for Vancouver Datajam 2024.
 
 ## Getting Started
 
