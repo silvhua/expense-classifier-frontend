@@ -1,5 +1,5 @@
 import {
-  PutObjectCommand, 
+  PutObjectCommand,
   DeleteObjectCommand,
   S3Client,
   S3ServiceException,
@@ -24,7 +24,8 @@ class AwsClient {
     console.log(credentials)
     this.client = new S3Client({
       region: process.env.NEXT_PUBLIC_AWS_REGION,
-      credentials: credentials
+      credentials: credentials,
+      forcePathStyle: true
     });
   }
 

@@ -3,7 +3,7 @@ import awsClient from '@/app/_libs/AwsClient';
 import Button from '../Button/Button';
 import './FileUpload.scss';
 
-const FileUpload = ({buttonText}) => {
+const FileUpload = ({ buttonText }) => {
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [uploadStatus, setUploadStatus] = useState('');
   const [filesStrings, setFilesStrings] = useState([]);
@@ -31,7 +31,7 @@ const FileUpload = ({buttonText}) => {
     try {
       for (let i = 0; i < selectedFiles.length; i++) {
         const file = selectedFiles[i];
-        const bucketName = 'datajam-expense-parser'; // Replace with your S3 bucket name
+        const bucketName = 'eclassifierbucket'; // Replace with your S3 bucket name
         const key = `receipts/${Date.now()}_${file.name}`; // add timestamp in ms to start of the filename
         const fileContent = file;
 
@@ -51,9 +51,9 @@ const FileUpload = ({buttonText}) => {
   return (
     <div>
       {/* https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file */}
-      <input 
-        type="file" multiple 
-        onChange={handleFileChange} 
+      <input
+        type="file" multiple
+        onChange={handleFileChange}
         name="file-input" id="file-input"
         accept=".pdf,.png,.jpg,.jpeg,.bmp,.tiff,.svg,.heic,.bmp,.raw,.webp"
       />
