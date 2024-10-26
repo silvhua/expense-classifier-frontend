@@ -5,9 +5,10 @@ import DownloadCsv from "./_components/DownloadCsv/DownloadCsv";
 import { formatDate } from "./_libs/dataProcessing";
 import FileUpload from "./_components/FileUpload/FileUpload";
 import NavBar from "./_components/NavBar/NavBar"
-
+import { useState } from "react";
 
 export default function Home() {
+  const [isUploading, setIsUploading] = useState(false);
   const data = [
     {
       'date': formatDate(new Date(), 'readable timestamp'),
@@ -23,7 +24,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <NavBar />
-      
+
       {/* Adjusted main section with flex-grow */}
       <main className={`${styles.main} flex-grow flex flex-col justify-center items-center`}>
         <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
@@ -32,14 +33,16 @@ export default function Home() {
         <p className="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
           Upload a PDF of your expenses. We'll help you classify and organize them.
         </p>
-
-        <FileUpload buttonText="Go!" />
+        <div className="w-full max-w-sm space-y-2">
+          <FileUpload />
+        </div>
+        {/*
         <DownloadCsv
           data={data}
           fileName="expenses"
           appendTimestamp={true}
           csvMapping={null}
-        />
+        /> */}
       </main>
 
       {/* Footer with mt-auto to push it to the bottom */}
