@@ -32,11 +32,11 @@ const FileUpload = ({ buttonText }) => {
     try {
       for (let i = 0; i < selectedFiles.length; i++) {
         const file = selectedFiles[i];
-        const bucketName = "my-first-bucket"; // Replace with your S3 bucket name
+        // const bucketName = "my-first-bucket"; // Replace with your S3 bucket name
         const key = `receipts/${Date.now()}_${file.name}`; // add timestamp in ms to start of the filename
         const fileContent = file;
 
-        const response = await awsClient.s3Upload(bucketName, key, fileContent);
+        const response = await awsClient.s3Upload(key, fileContent);
       }
       setUploadStatus('Upload successful!');
       setIsUploading(false);
@@ -53,12 +53,6 @@ const FileUpload = ({ buttonText }) => {
   return (
     <div>
       {/* https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file */}
-      {/* <input
-        type="file" multiple
-        onChange={handleFileChange}
-        name="file-input" id="file-input"
-        accept=".pdf,.png,.jpg,.jpeg,.bmp,.tiff,.svg,.heic,.bmp,.raw,.webp"
-      /> */}
       <input
         className="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none"
         type="file" multiple
@@ -75,9 +69,7 @@ const FileUpload = ({ buttonText }) => {
 
       {/* <Button buttonProps={buttonProps} /> */}
       <button
-        // buttonProps={buttonProps}
         onClick={handleUpload}
-        // type="submit"
         disabled={isUploading}
         className={`flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white rounded-lg ${isUploading
           ? 'bg-gray-400 cursor-not-allowed'

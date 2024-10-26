@@ -34,34 +34,9 @@ export default function Home() {
           Upload a PDF of your expenses. We'll help you classify and organize them.
         </p>
         <div className="w-full max-w-sm space-y-2">
-          {/* <form className="flex flex-col space-y-4" */}
-          {/* // onSubmit={handleSubmit} */}
-          {/* > */}
           <FileUpload />
-          {/* <button
-              type="submit"
-              disabled={isUploading}
-              className={`flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white rounded-lg ${isUploading
-                ? 'bg-gray-400 cursor-not-allowed'
-                : 'bg-black hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2'
-                }`}
-            >
-              {isUploading ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Uploading...
-                </>
-              ) : (
-                <>
-                  <Receipt className="mr-2 h-4 w-4" />
-                  Upload PDF
-                </>
-              )}
-            </button> */}
-          {/* </form> */}
         </div>
-
-        {/* <FileUpload buttonText="Go!" />
+        {/*
         <DownloadCsv
           data={data}
           fileName="expenses"
