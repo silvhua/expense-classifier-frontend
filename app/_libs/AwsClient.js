@@ -38,10 +38,10 @@ class AwsClient {
     }
   }
 
-  async s3Upload(bucketName, key, fileContent) {
+  async s3Upload(key, fileContent) {
     // Example: https://github.com/awsdocs/aws-doc-sdk-examples/blob/main/javascriptv3/example_code/s3/actions/put-object.js
     const params = {
-      Bucket: bucketName,
+      Bucket: process.env.NEXT_PUBLIC_AWS_BUCKET_NAME,
       Key: key,
       Body: fileContent
     };
