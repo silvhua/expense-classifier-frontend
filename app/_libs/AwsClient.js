@@ -1,5 +1,5 @@
 import {
-  PutObjectCommand, 
+  PutObjectCommand,
   DeleteObjectCommand,
   S3Client,
   S3ServiceException,
@@ -21,11 +21,21 @@ class AwsClient {
       accessKeyId: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID,
       secretAccessKey: process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY,
     }
-    console.log(credentials)
-    this.client = new S3Client({
-      region: process.env.NEXT_PUBLIC_AWS_REGION,
-      credentials: credentials
-    });
+
+    if (process.env.NEXT_PUBLIC_AWS_ENDPOINT) {
+      this.client = new S3Client({
+        region: process.env.NEXT_PUBLIC_AWS_REGION,
+        credentials: credentials,
+        endpoint: process.env.NEXT_PUBLIC_AWS_ENDPOINT,
+        forcePathStyle: true
+      });
+    }
+    else {
+      this.client = new S3Client({
+        region: process.env.NEXT_PUBLIC_AWS_REGION,
+        credentials: credentials,
+      });
+    }
   }
 
   async s3Upload(bucketName, key, fileContent) {
