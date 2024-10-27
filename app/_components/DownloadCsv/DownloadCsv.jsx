@@ -45,6 +45,10 @@ const DownloadCsv = ({ data, fileName, csvMapping, appendTimestamp }) => {
 
     if (addHeader) {
       const headerObject = {}
+      // if array is empty, return an empty string
+      if (array.length === 0) {
+        return str;
+      }
       Object.keys(array[0]).forEach(key => {
         headerObject[key] = key;
       });

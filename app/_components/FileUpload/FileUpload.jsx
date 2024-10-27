@@ -45,6 +45,7 @@ const FileUpload = ({ buttonText }) => {
         const response = await awsClient.s3Upload(key, fileContent);
       }
       setUploadStatus('Upload successful!');
+      setIsUploading(false);
       console.log("receipts: ", receipts);
       // Call the api to process the uploaded files
       // const response = await fetch('/api/process-files');
@@ -60,10 +61,10 @@ const FileUpload = ({ buttonText }) => {
         setData([...data, resJson]);
         console.log("response: ", receipts[i], resJson);
       }
-      setIsUploading(false);
 
     } catch (error) {
-      setUploadStatus(`Upload failed: ${error.message}`);
+      setUploadStatus(`ERROR : ${error.message}`);
+      setIsUploading(false);
     }
   };
 
@@ -104,7 +105,7 @@ const FileUpload = ({ buttonText }) => {
             </>
           )}
         </button>
-        <p className='red-text'>Upload status: {uploadStatus}</p>
+        <p className='red-text'>Status: {uploadStatus}</p>
       </div>
       <DownloadCsv
         data={data}
