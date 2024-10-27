@@ -10,18 +10,7 @@ const FileUpload = ({ buttonText }) => {
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [uploadStatus, setUploadStatus] = useState('');
   const [filesStrings, setFilesStrings] = useState([]);
-  const [data, setData] = useState([
-    {
-      'date': formatDate(new Date(), 'readable timestamp'),
-      'amount': 100,
-      'description': 'Lunch'
-    },
-    {
-      'date': formatDate(new Date(), 'readable timestamp'),
-      'amount': 200,
-      'description': 'Dinner'
-    }
-  ]);
+  const [data, setData] = useState([]);
 
 
   const handleFileChange = (event) => {
@@ -56,19 +45,20 @@ const FileUpload = ({ buttonText }) => {
         const response = await awsClient.s3Upload(key, fileContent);
       }
       setUploadStatus('Upload successful!');
+      console.log("receipts: ", receipts);
       // Call the api to process the uploaded files
       // const response = await fetch('/api/process-files');
       for (let i = 0; i < receipts.length; i++) {
-        const response = await fetch("https://mcoklwrpa3.execute-api.us-west-2.amazonaws.com/Prod/initiate", {
+        const response = await fetch(process.env.NEXT_PUBLIC_AWS_COORDINATOR_FUNCTION_API, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({ "filename": receipts[i] }),
         });
-        const data = await response.json();
-        setData([...data, data]);
-        console.log("response: ", receipts[i], data);
+        const resJson = await response.json();
+        setData([...data, resJson]);
+        console.log("response: ", receipts[i], resJson);
       }
       setIsUploading(false);
 
