@@ -11,6 +11,7 @@ const FileUpload = ({ buttonText }) => {
   const [uploadStatus, setUploadStatus] = useState('');
   const [filesStrings, setFilesStrings] = useState([]);
   const [data, setData] = useState([]);
+  const [isFetchingAll, setIsFetchingAll] = useState(false);
 
 
   const handleFileChange = (event) => {
@@ -32,7 +33,7 @@ const FileUpload = ({ buttonText }) => {
     }
     setIsUploading(true);
     setUploadStatus('Uploading...');
-
+    setIsFetchingAll(true);
     try {
       let receipts = [];
       for (let i = 0; i < selectedFiles.length; i++) {
@@ -93,6 +94,8 @@ const FileUpload = ({ buttonText }) => {
         );
         return [...prevData, ...uniqueNewData];
       });
+      console.log("data updated ", data);
+      setIsFetchingAll(false);
 
     } catch (error) {
       setUploadStatus(`ERROR : ${error.message}`);
@@ -144,6 +147,7 @@ const FileUpload = ({ buttonText }) => {
         fileName="expenses"
         appendTimestamp={true}
         csvMapping={null}
+        isFetchingAll={isFetchingAll}
       />
     </>
 
