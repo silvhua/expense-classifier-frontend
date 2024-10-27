@@ -51,6 +51,7 @@ const FileUpload = ({ buttonText }) => {
       console.log("receipts: ", receipts);
       // Call the api to process the uploaded files
       // const response = await fetch('/api/process-files');
+      const newData = [];
       for (let i = 0; i < receipts.length; i++) {
         console.log("body json", JSON.stringify(
           {
@@ -83,13 +84,16 @@ const FileUpload = ({ buttonText }) => {
             typeof value === 'string' ? value.replace(/\n/g, ' ') : value
           ])
         );
+        newData.push(modifiedSupplierData);
 
-        console.log("modified data", modifiedSupplierData);
-
-        setData([...data, modifiedSupplierData]);
       }
+      setData(prevData => {
+        const uniqueNewData = newData.filter(newItem =>
+          !prevData.some(existingItem => existingItem.filename === newItem.filename)
+        );
+        return [...prevData, ...uniqueNewData];
+      });
 
-      console.log("data after all", data);
     } catch (error) {
       setUploadStatus(`ERROR : ${error.message}`);
       setIsUploading(false);
