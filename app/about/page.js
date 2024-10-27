@@ -6,15 +6,46 @@ const teamMembers = [
         name: "Silvia Hua",
         github: "https://github.com/silvhua",
         linkedin: "https://www.linkedin.com/in/silviahua/",
-        headline: "Software developer and Olympic weighlifter"
+        headline: "Kinesiologist-turned-software developer"
     },
     {
         name: "Shwetha",
         github: "",
         linkedin: "https://www.linkedin.com/in/svedavinayagam/",
         headline: "Aspiring Data Analyst & Software developer"
+    },
+    {
+        name: "Gabriel Q",
+        github: "https://github.com/gabriellsq",
+        linkedin: "https://www.linkedin.com/in/gabriellsq/",
+        headline: "Data Scientist & Machine Learning Engineer"
+    },
+    {
+        name: "Sandaru W",
+        github: "",
+        linkedin: "https://www.linkedin.com/in/sandaru-welikala/",
+        headline: "Software engineer & Data analyst enthusiast"
+    },
+    {
+        name: "Qiye (Jacky) Chen",
+        github: "https://github.com/jacky5124",
+        linkedin: "https://www.linkedin.com/in/qiye-chen-71623879/",
+        headline: "Software engineer & Machine Learning Engineer"
+    },
+    {
+        name: "Jane Zhu",
+        github: "https://github.com/Janezhuu",
+        linkedin: "https://www.linkedin.com/in/zhaojin-zhu-zzj/",
+        headline: "Data Analyst and enthusiast"
+    },
+    {
+        name: "Kyung Cheol Koh",
+        github: "https://github.com/kckoh",
+        linkedin: "https://www.linkedin.com/in/kyungcheol-koh/",
+        headline: "Software Developer"
     }
 ]
+
 
 export default function AboutUs() {
     return (
