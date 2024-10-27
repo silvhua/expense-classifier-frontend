@@ -19,7 +19,7 @@ export default function Home() {
           Classify Your Expenses
         </h1>
         <p className="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
-          Upload a PDF of your expenses. We'll help you classify and organize them.
+          Upload a file/files of your expenses. We'll help you classify and organize them.
         </p>
         <div className="w-full max-w-sm space-y-2">
           <FileUpload />
