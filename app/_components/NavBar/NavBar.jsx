@@ -9,7 +9,7 @@ const NavBar = () => {
         <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img src={logo.src} className="h-8" alt="EC Logo" />
 
-          <span className="self-center text-2xl font-sans font-semibold whitespace-nowrap dark:text-white">Expense Classifier</span>
+          <span className="self-center text-2xl font-sans font-semibold whitespace-nowrap dark:text-white">Expense AI</span>
         </a>
         <button data-collapse-toggle="navbar-default" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
           <span className="sr-only">Open main menu</span>
@@ -26,9 +26,6 @@ const NavBar = () => {
               <a href="/about" className="block py-2 px-3 text-black font-medium rounded hover:font-semibold hover:text-black md:border-0 md:p-0 dark:text-black"
 
               >About Us</a>
-            </li>
-            <li>
-              <a href="#" className="block py-2 px-3 text-black font-medium rounded hover:font-semibold hover:text-black md:border-0 md:p-0 dark:text-black">Contact</a>
             </li>
           </ul>
         </div>

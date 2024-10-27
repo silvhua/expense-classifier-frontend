@@ -1,4 +1,4 @@
-# Expense Classifier Front End (Datajam 2024)
+# Expense AI Front End (Datajam 2024)
 This project is for Vancouver Datajam 2024.
 
 ## Getting Started
