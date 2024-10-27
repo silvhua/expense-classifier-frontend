@@ -55,7 +55,14 @@ const FileUpload = ({ buttonText }) => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ "filename": receipts[i] }),
+          body: JSON.stringify(
+            {
+              "body": {
+                "filename": receipts[i]
+              }
+            }
+
+          ),
         });
         const resJson = await response.json();
         setData([...data, resJson]);
