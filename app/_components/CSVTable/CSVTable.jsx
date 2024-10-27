@@ -1,75 +1,74 @@
 'use client'
 import React, { useState, useEffect } from 'react';
-import styles from "../../page.module.css";
-import styles_table from "./CSVTable.css";
 
-const CSVTable = () => {
-  const [data, setData] = useState([]);
+
+const CSVTable = (props) => {
+  // const [data, setData] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
+  const { data } = props;
+  console.log("props", props)
+
 
   useEffect(() => {
     // Simulating JSON data instead of fetching from files
-    const exampleData = [
-      [
-        {
-          "supplier_name": "Browns Socialhouse Queen Elizabeth Theatre (QE Theatre)",
-          "total_amount": "6.18",
-          "receipt_date": "2024-08-14",
-          "line_items": "4 DIET COKE 4.75, SERVICE CHARGE 0.86, S. Bev Tax 0.33",
-          "supplier_address": "675 Cambie St Vancouver, BC V6B 2P1 Canada",
-          "category": "meals and entertainment"
-        },
-        {
-          "supplier_name": "Starbucks Coffee",
-          "total_amount": "12.50",
-          "receipt_date": "2024-08-12",
-          "line_items": "2 LATTE 5.75, SERVICE CHARGE 1.00",
-          "supplier_address": "700 W Georgia St Vancouver, BC V7Y 1G5 Canada",
-          "category": "meals and entertainment"
-        }
-      ],
-      [
-        {
-          "supplier_name": "McDonald's",
-          "total_amount": "9.99",
-          "receipt_date": "2024-08-10",
-          "line_items": "1 Big Mac 6.50, Fries 2.49, Beverage Tax 1.00",
-          "supplier_address": "500 Granville St Vancouver, BC V6C 1W6 Canada",
-          "category": "meals and entertainment"
-        },
-        {
-          "supplier_name": "Apple Store",
-          "total_amount": "999.00",
-          "receipt_date": "2024-07-22",
-          "line_items": "1 iPhone 999.00",
-          "supplier_address": "815 W Hastings St Vancouver, BC V6C 1B4 Canada",
-          "category": "electronics"
-        }
-      ],
-      [
-        {
-          "supplier_name": "Walmart",
-          "total_amount": "75.45",
-          "receipt_date": "2024-08-18",
-          "line_items": "Groceries 50.00, Household Items 25.45",
-          "supplier_address": "650 SE Marine Dr Vancouver, BC V5X 2T4 Canada",
-          "category": "groceries"
-        },
-        {
-          "supplier_name": "Best Buy",
-          "total_amount": "249.99",
-          "receipt_date": "2024-08-20",
-          "line_items": "Bluetooth Speaker 249.99",
-          "supplier_address": "2220 Cambie St Vancouver, BC V5Z 2T7 Canada",
-          "category": "electronics"
-        }
-      ]
-    ];
+    // const exampleData = [
+    //   {
+    //     "supplier_name": "Browns Socialhouse Queen Elizabeth Theatre (QE Theatre)",
+    //     "total_amount": "6.18",
+    //     "receipt_date": "2024-08-14",
+    //     "line_items": "4 DIET COKE 4.75, SERVICE CHARGE 0.86, S. Bev Tax 0.33",
+    //     "supplier_address": "675 Cambie St Vancouver, BC V6B 2P1 Canada",
+    //     "category": "meals and entertainment"
+    //   },
+    //   {
+    //     "supplier_name": "Starbucks Coffee",
+    //     "total_amount": "12.50",
+    //     "receipt_date": "2024-08-12",
+    //     "line_items": "2 LATTE 5.75, SERVICE CHARGE 1.00",
+    //     "supplier_address": "700 W Georgia St Vancouver, BC V7Y 1G5 Canada",
+    //     "category": "meals and entertainment"
+    //   }
+    //   ,
+    //   {
+    //     "supplier_name": "McDonald's",
+    //     "total_amount": "9.99",
+    //     "receipt_date": "2024-08-10",
+    //     "line_items": "1 Big Mac 6.50, Fries 2.49, Beverage Tax 1.00",
+    //     "supplier_address": "500 Granville St Vancouver, BC V6C 1W6 Canada",
+    //     "category": "meals and entertainment"
+    //   },
+    //   {
+    //     "supplier_name": "Apple Store",
+    //     "total_amount": "999.00",
+    //     "receipt_date": "2024-07-22",
+    //     "line_items": "1 iPhone 999.00",
+    //     "supplier_address": "815 W Hastings St Vancouver, BC V6C 1B4 Canada",
+    //     "category": "electronics"
+    //   },
+    //   {
+    //     "supplier_name": "Walmart",
+    //     "total_amount": "75.45",
+    //     "receipt_date": "2024-08-18",
+    //     "line_items": "Groceries 50.00, Household Items 25.45",
+    //     "supplier_address": "650 SE Marine Dr Vancouver, BC V5X 2T4 Canada",
+    //     "category": "groceries"
+    //   },
+    //   {
+    //     "supplier_name": "Best Buy",
+    //     "total_amount": "249.99",
+    //     "receipt_date": "2024-08-20",
+    //     "line_items": "Bluetooth Speaker 249.99",
+    //     "supplier_address": "2220 Cambie St Vancouver, BC V5Z 2T7 Canada",
+    //     "category": "electronics"
+    //   }
+
+    // ];
 
     // Flatten the example data
-    const combinedData = exampleData.flat();
-    setData(combinedData); // Store the combined data in state
+    // const combinedData = exampleData.flat();
+    // setData(passedData); // Store the combined data in state
   }, []);
+
 
   // Handle checkbox changes
   const handleCategoryChange = (category) => {
@@ -85,33 +84,33 @@ const CSVTable = () => {
     ? data.filter(item => selectedCategories.includes(item.category))
     : data;
 
-  
+
   const categories = [
     "advertising",
     "allowance on eligible capital property",
     "bad debts",
     "business start-up costs",
     "business tax, fees, licenses and dues",
-    "business-use-of-home expenses", 
+    "business-use-of-home expenses",
     "capital cost allowance",
     "delivery, freight and express",
-    "fuel costs", 
-    "insurance", 
+    "fuel costs",
+    "insurance",
     "interest and bank charges",
-    "legal, accounting and other professional fees", 
-    "maintenance and repairs", "management and administration fees", 
+    "legal, accounting and other professional fees",
+    "maintenance and repairs", "management and administration fees",
     "meals and entertainment",
-    "motor vehicle expenses", 
-    "office expenses", 
-    "other business expenses", 
-    "prepaid expenses", 
-    "property taxes", 
-    "rent", 
+    "motor vehicle expenses",
+    "office expenses",
+    "other business expenses",
+    "prepaid expenses",
+    "property taxes",
+    "rent",
     "salaries, wages and benefits",
-    "supplies", 
-    "telephone and utilities", 
+    "supplies",
+    "telephone and utilities",
     "travel"
-    
+
   ];
 
   return (
@@ -142,17 +141,17 @@ const CSVTable = () => {
           </li>
         ))}
       </ul>
-  
+
       <table className="min-w-full bg-white rounded-lg shadow mt-4">
         <thead>
           <tr className="bg-gray-200">
-            {filteredData.length > 0 && Object.keys(filteredData[0]).map((key, index) => (
+            {filteredData && filteredData.length > 0 && Object.keys(filteredData[0]).map((key, index) => (
               <th className="border px-6 py-3 text-left text-gray-600" key={index}>{key}</th>
             ))}
           </tr>
         </thead>
         <tbody>
-          {filteredData.map((row, rowIndex) => (
+          {filteredData && filteredData.map((row, rowIndex) => (
             <tr className="border-b" key={rowIndex}>
               {Object.values(row).map((value, colIndex) => (
                 <td className="px-4 py-2" key={colIndex}>{value}</td>

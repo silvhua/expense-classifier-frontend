@@ -24,13 +24,6 @@ export default function Home() {
         <div className="w-full max-w-sm space-y-2">
           <FileUpload />
         </div>
-        {/* 
-        <DownloadCsv
-          data={data}
-          fileName="expenses"
-          appendTimestamp={true}
-          csvMapping={null}
-        /> */}
       </main>
 
       {/* Footer with mt-auto to push it to the bottom */}

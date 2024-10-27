@@ -5,6 +5,7 @@ import './FileUpload.scss';
 import { formatDate } from "../../_libs/dataProcessing";
 import { Receipt, Loader2 } from "lucide-react"
 import DownloadCsv from '../DownloadCsv/DownloadCsv';
+import CSVTable from '../CSVTable/CSVTable';
 const FileUpload = ({ buttonText }) => {
   const [isUploading, setIsUploading] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState([]);
@@ -145,6 +146,7 @@ const FileUpload = ({ buttonText }) => {
         appendTimestamp={true}
         csvMapping={null}
       />
+      <CSVTable data={data} />
     </>
 
   );
