@@ -2,25 +2,13 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import DownloadCsv from "./_components/DownloadCsv/DownloadCsv";
-import { formatDate } from "./_libs/dataProcessing";
 import FileUpload from "./_components/FileUpload/FileUpload";
 import NavBar from "./_components/NavBar/NavBar"
 import { useState } from "react";
 
 export default function Home() {
   const [isUploading, setIsUploading] = useState(false);
-  const data = [
-    {
-      'date': formatDate(new Date(), 'readable timestamp'),
-      'amount': 100,
-      'description': 'Lunch'
-    },
-    {
-      'date': formatDate(new Date(), 'readable timestamp'),
-      'amount': 200,
-      'description': 'Dinner'
-    }
-  ]
+
   return (
     <div className="flex flex-col min-h-screen">
       <NavBar />
@@ -36,7 +24,7 @@ export default function Home() {
         <div className="w-full max-w-sm space-y-2">
           <FileUpload />
         </div>
-        {/*
+        {/* 
         <DownloadCsv
           data={data}
           fileName="expenses"
