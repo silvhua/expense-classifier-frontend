@@ -1,0 +1,11 @@
+purchase_time,total_amount,currency,supplier_name,supplier_address,receipt_date,supplier_city,category
+2023-10-10 00:00:00,148.51,USD,Supplier A,196 Main St,2023-10-31,Chicago,Accessories
+2023-03-18 00:00:00,495.54,USD,Supplier B,903 Main St,2023-09-19,Los Angeles,Accessories
+2023-05-13 00:00:00,444.23,USD,Supplier C,544 Main St,2023-11-13,Phoenix,Groceries
+2023-06-21 00:00:00,58.48,USD,Supplier D,502 Main St,2023-11-21,Phoenix,Accessories
+2023-08-10 00:00:00,385.99,USD,Supplier B,914 Main St,2023-06-03,Chicago,Clothing
+2023-08-27 00:00:00,353.21,USD,Supplier D,351 Main St,2023-09-24,New York,Accessories
+2023-10-21 00:00:00,79.66,USD,Supplier A,823 Main St,2023-09-13,Houston,Furniture
+2023-07-03 00:00:00,429.84,USD,Supplier B,519 Main St,2023-10-03,Chicago,Electronics
+2023-08-20 00:00:00,131.73,USD,Supplier D,832 Main St,2023-06-08,New York,Groceries
+2023-08-10 00:00:00,54.52,USD,Supplier C,202 Main St,2023-05-15,Chicago,Clothing
