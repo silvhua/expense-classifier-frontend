@@ -115,7 +115,7 @@ const CSVTable = (props) => {
 
   return (
     <div className="px-8 overflow-x-auto max-w-full">
-      <h3 className="mb-4 font-semibold text-gray-900 dark:text-white text-center">Categories: </h3>
+      <h3 className="pt-10 mb-4 font-semibold text-gray-900 dark:text-white text-center">Categories: </h3>
       <ul className="items-center w-full text-sm font-mediumtext-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white overflow-x-auto whitespace-nowrap">
         {categories.map((category, index) => (
           <li

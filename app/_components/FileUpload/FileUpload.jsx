@@ -6,6 +6,7 @@ import { formatDate } from "../../_libs/dataProcessing";
 import { Receipt, Loader2 } from "lucide-react"
 import DownloadCsv from '../DownloadCsv/DownloadCsv';
 import CSVTable from '../CSVTable/CSVTable';
+import styles from '../../page.module.css'
 const FileUpload = ({ buttonText }) => {
   const [isUploading, setIsUploading] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState([]);
@@ -103,7 +104,7 @@ const FileUpload = ({ buttonText }) => {
 
   return (
     <>
-      <div>
+      <div className="w-full md:w-80  space-y-2 mx-auto">
         {/* https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file */}
         <input
           className="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none"
@@ -112,7 +113,7 @@ const FileUpload = ({ buttonText }) => {
           name="file-input" id="file-input"
           accept=".pdf,.png,.jpg,.jpeg,.bmp,.tiff,.svg,.heic,.bmp,.raw,.webp"
         />
-        <p>Selected files:</p>
+        <p >Selected files:</p>
         {
           filesStrings.map((filename, index) => {
             return <p key={index}>{filename}</p>
@@ -139,14 +140,18 @@ const FileUpload = ({ buttonText }) => {
           )}
         </button>
         <p className='red-text'>Status: {uploadStatus}</p>
-      </div>
-      <DownloadCsv
+
+        <DownloadCsv
         data={data}
         fileName="expenses"
         appendTimestamp={true}
         csvMapping={null}
       />
-      <CSVTable data={data} />
+      </div>
+      <div className="container mx-auto space-y-2">
+        <CSVTable  data={data} />
+      </div>
+      
     </>
 
   );
