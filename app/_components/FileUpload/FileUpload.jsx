@@ -38,8 +38,10 @@ const FileUpload = ({ buttonText }) => {
       for (let i = 0; i < selectedFiles.length; i++) {
         const file = selectedFiles[i];
         // const bucketName = "my-first-bucket"; // Replace with your S3 bucket name
-        const key = `receipts/${Date.now()}_${file.name}`; // add timestamp in ms to start of the filename
-        receipts.push(key);
+        const filename_date = `${Date.now()}_${file.name}`;
+        const key = `receipts/${filename_date}`; // add timestamp in ms to start of the filename
+
+        receipts.push(filename_date);
         const fileContent = file;
 
         const response = await awsClient.s3Upload(key, fileContent);
@@ -50,6 +52,14 @@ const FileUpload = ({ buttonText }) => {
       // Call the api to process the uploaded files
       // const response = await fetch('/api/process-files');
       for (let i = 0; i < receipts.length; i++) {
+        console.log("body json", JSON.stringify(
+          {
+            "body": {
+              "filename": receipts[i]
+            }
+          }
+
+        ))
         const response = await fetch(process.env.NEXT_PUBLIC_AWS_COORDINATOR_FUNCTION_API, {
           method: 'POST',
           headers: {
@@ -65,10 +75,21 @@ const FileUpload = ({ buttonText }) => {
           ),
         });
         const resJson = await response.json();
-        setData([...data, resJson]);
-        console.log("response: ", receipts[i], resJson);
+        console.log("resJson", resJson);
+        // get the key, value pairs and replacen with spaces from the values
+        const modifiedSupplierData = Object.fromEntries(
+          Object.entries(resJson).map(([key, value]) => [
+            key,
+            typeof value === 'string' ? value.replace(/\n/g, ' ') : value
+          ])
+        );
+
+        console.log("modified data", modifiedSupplierData);
+
+        setData([...data, modifiedSupplierData]);
       }
 
+      console.log("data after all", data);
     } catch (error) {
       setUploadStatus(`ERROR : ${error.message}`);
       setIsUploading(false);

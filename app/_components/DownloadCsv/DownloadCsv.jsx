@@ -55,7 +55,9 @@ const DownloadCsv = ({ data, fileName, csvMapping, appendTimestamp }) => {
 
       objArray = array.unshift(headerObject);
     }
-
+    // remove any duplicate values from the array
+    const uniqueArray = array.filter((value, index, self) => self.indexOf(value) === index);
+    console.log("uniqueArray==", uniqueArray);
     for (let i = 0; i < array.length; i++) {
       let line = '';
       for (let index in array[i]) {
